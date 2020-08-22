@@ -14,22 +14,23 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
-from pyrogram import (
-    Client,
-    Filters,
-    Message
-)
-from bot import (
-    AUTH_USERS
-)
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, scoped_session
+from bot import DB_URI
 
 
-@Client.on_message(
-    ~Filters.chat(AUTH_USERS)
-)
-async def on_pm_s(client: Client, message: Message):
-    fwded_mesg = await message.forward(
-        AUTH_USERS[0]
+def start() -> scoped_session:
+    engine = create_engine(DB_URI)
+    BASE.metadata.bind = engine
+    BASE.metadata.create_all(engine)
+    return scoped_session(
+        sessionmaker(
+            bind=engine,
+            autoflush=False
+        )
     )
-    print(fwded_mesg)
+
+
+BASE = declarative_base()
+SESSION = start()
