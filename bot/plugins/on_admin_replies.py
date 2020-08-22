@@ -21,7 +21,11 @@ from pyrogram import (
     Message
 )
 from bot import (
-    AUTH_USERS
+    AUTH_USERS,
+    DERP_USER_S_TEXT
+)
+from bot.hf.gfi import (
+    get_file_id
 )
 from bot.sql.users_sql import (
     get_user_id
@@ -41,7 +45,9 @@ async def on_pm_s(client: Client, message: Message):
     # 🥺 check two conditions 🤔🤔
     if message.media:
         _, file_id = get_file_id(message)
-        caption = message.caption.html
+        caption = (
+            message.caption and message.caption.html
+        ) or ""
         await client.send_cached_media(
             chat_id=user_id,
             file_id=file_id,
@@ -51,10 +57,14 @@ async def on_pm_s(client: Client, message: Message):
             reply_to_message_id=reply_message_id
         )
     else:
+        caption = (
+            message.text and message.text.html
+        ) or DERP_USER_S_TEXT
         await client.send_message(
             chat_id=user_id,
-            text=message.text.html,
+            text=caption,
             disable_web_page_preview=True,
+            reply_markup=message.reply_markup,
             disable_notification=True,
             reply_to_message_id=reply_message_id
         )
