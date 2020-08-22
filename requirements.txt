@@ -1,0 +1,5 @@
+git+git://github.com/pyrogram/pyrogram@asyncio#pyrogram
+tgcrypto
+psycopg2-binary
+sqlalchemy
+
