@@ -14,28 +14,15 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
-from pyrogram import (
-    Client
-)
-from bot import (
-    API_HASH,
-    APP_ID,
-    TG_BOT_TOKEN,
-    TG_BOT_WORKERS
-)
+import os
 
 
-if __name__ == "__main__":
-    app = Client(
-        ":memory:",
-        api_hash=API_HASH,
-        api_id=APP_ID,
-        bot_token=TG_BOT_TOKEN,
-        plugins=dict(
-            root="bot/plugins"
-        ),
-        workers=TG_BOT_WORKERS
-    )
-    app.set_parse_mode("html")
-    app.run()
+def get_config(name: str, d_v=None, should_prompt=False):
+    val = os.environ.get(name, d_v)
+    if not val and should_prompt:
+        try:
+            val = input(f"enter {name}'s value: ")
+        except EOFError:
+            val = d_v
+        print("\n")
+    return val
