@@ -36,6 +36,9 @@
         "version": "12"
       }
     }],
+    "buildpacks": [{
+      "url": "heroku/python"
+    }],
     "formation": {
       "worker": {
         "quantity": 1,
