@@ -23,6 +23,9 @@ from pyrogram import (
 from bot import (
     AUTH_USERS
 )
+from bot.sql.users_sql import (
+    get_user_id
+)
 
 
 @Client.on_message(
@@ -32,4 +35,26 @@ from bot import (
     )
 )
 async def on_pm_s(client: Client, message: Message):
-    print(message)
+    user_id, reply_message_id = get_user_id(
+        message.reply_to_message.message_id
+    )
+    # 🥺 check two conditions 🤔🤔
+    if message.media:
+        _, file_id = get_file_id(message)
+        caption = message.caption.html
+        await client.send_cached_media(
+            chat_id=user_id,
+            file_id=file_id,
+            caption=caption,
+            reply_markup=message.reply_markup,
+            disable_notification=True,
+            reply_to_message_id=reply_message_id
+        )
+    else:
+        await client.send_message(
+            chat_id=user_id,
+            text=message.text.html,
+            disable_web_page_preview=True,
+            disable_notification=True,
+            reply_to_message_id=reply_message_id
+        )

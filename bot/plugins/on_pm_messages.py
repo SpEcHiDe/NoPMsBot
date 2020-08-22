@@ -23,6 +23,9 @@ from pyrogram import (
 from bot import (
     AUTH_USERS
 )
+from bot.sql.users_sql import (
+    add_user_to_db
+)
 
 
 @Client.on_message(
@@ -32,4 +35,10 @@ async def on_pm_s(client: Client, message: Message):
     fwded_mesg = await message.forward(
         AUTH_USERS[0]
     )
-    print(fwded_mesg)
+    # just store, we don't need to SPAM users
+    # mimick LiveGramBot, not @LimitatiBot ..!
+    add_user_to_db(
+        fwded_mesg.message_id,
+        message.from_user.id,
+        message.message_id
+    )
