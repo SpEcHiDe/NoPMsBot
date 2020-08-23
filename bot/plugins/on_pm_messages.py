@@ -31,7 +31,7 @@ from bot.sql.users_sql import (
 @Client.on_message(
     ~Filters.chat(AUTH_USERS)
 )
-async def on_pm_s(client: Client, message: Message):
+async def on_pm_s(_, message: Message):
     fwded_mesg = await message.forward(
         AUTH_USERS[0]
     )

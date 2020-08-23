@@ -14,10 +14,14 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+""" wrapper for getting the credentials """
+
 import os
 
 
 def get_config(name: str, d_v=None, should_prompt=False):
+    """ accepts one mandatory variable
+    and prompts for the value, if not available """
     val = os.environ.get(name, d_v)
     if not val and should_prompt:
         try:

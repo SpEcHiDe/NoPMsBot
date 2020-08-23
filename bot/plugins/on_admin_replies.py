@@ -35,7 +35,8 @@ from bot.sql.users_sql import (
 @Client.on_message(
     Filters.chat(AUTH_USERS) &
     Filters.create(
-        lambda _, message: message.reply_to_message and message.reply_to_message.from_user.is_self
+        lambda _, message: message.reply_to_message and
+        message.reply_to_message.from_user.is_self
     )
 )
 async def on_pm_s(client: Client, message: Message):

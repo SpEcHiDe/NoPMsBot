@@ -14,13 +14,16 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+""" init SQL """
+
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session
-from bot import DB_URI
+from .. import DB_URI
 
 
 def start() -> scoped_session:
+    """ returns SQLAlchemy ScopedSession """
     engine = create_engine(DB_URI)
     BASE.metadata.bind = engine
     BASE.metadata.create_all(engine)

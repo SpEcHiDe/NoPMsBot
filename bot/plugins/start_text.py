@@ -29,9 +29,10 @@ from bot import (
 
 @Client.on_message(
     Filters.command("start") &
-    ~Filters.chat(AUTH_USERS)
+    ~Filters.chat(AUTH_USERS),
+    group=3
 )
-async def num_start_message(client: Client, message: Message):
+async def num_start_message(_, message: Message):
     await message.reply_text(
         START_OTHER_USERS_TEXT,
         quote=True
@@ -40,9 +41,10 @@ async def num_start_message(client: Client, message: Message):
 
 @Client.on_message(
     Filters.command("start") &
-    Filters.chat(AUTH_USERS)
+    Filters.chat(AUTH_USERS),
+    group=7
 )
-async def nimda_start_message(client: Client, message: Message):
+async def nimda_start_message(_, message: Message):
     await message.reply_text(
         ONLINE_CHECK_START_TEXT,
         quote=True

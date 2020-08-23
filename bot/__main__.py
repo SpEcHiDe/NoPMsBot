@@ -14,11 +14,12 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+""" MtProto Bot """
 
 from pyrogram import (
     Client
 )
-from bot import (
+from . import (
     API_HASH,
     APP_ID,
     TG_BOT_TOKEN,

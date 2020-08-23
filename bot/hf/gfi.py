@@ -35,19 +35,19 @@ def get_file_id(msg: Message):
         elif msg.photo:
             content = msg.photo.file_id
             data_type = msg.photo
-            
+
         elif msg.audio:
             content = msg.audio.file_id
             data_type = msg.audio
-            
+
         elif msg.voice:
             content = msg.voice.file_id
             data_type = msg.voice
-            
+
         elif msg.video:
             content = msg.video.file_id
             data_type = msg.video
-            
+
         elif msg.video_note:
             content = msg.video_note.file_id
             data_type = msg.video_note

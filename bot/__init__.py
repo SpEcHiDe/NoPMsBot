@@ -14,8 +14,9 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+""" credentials """
 
-from bot.get_config import get_config
+from .get_config import get_config
 
 
 # The Telegram API things
