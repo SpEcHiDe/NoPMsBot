@@ -76,3 +76,26 @@ DERP_USER_S_TEXT = get_config(
     "DERP_USER_S_TEXT",
     "😐"
 )
+BAN_COMMAND = "/ban"
+# message to show when user is banned
+IS_BLACK_LIST_ED_MESSAGE_TEXT = get_config(
+    "IS_BLACK_LIST_ED_MESSAGE_TEXT",
+    (
+        "You have been <b>banned</b> forever.\n\n"
+        "<u>Reason</u>: <code>{reason}</code>"
+    )
+)
+# IDEKWBYRW
+REASON_DE_LIMIT_ER = get_config(
+    "REASON_DE_LIMIT_ER",
+    "\n\n"
+)
+UN_BAN_COMMAND = "/unban"
+# message to show when user is unbanned
+IS_UN_BANED_MESSAGE_TEXT = get_config(
+    "IS_UN_BANED_MESSAGE_TEXT",
+    (
+        "You have been <b>un-banned</b>.\n\n"
+        "<u>Reason</u>: <code>{reason}</code>"
+    )
+)

@@ -21,10 +21,14 @@ from pyrogram import (
     Message
 )
 from bot import (
-    AUTH_USERS
+    AUTH_USERS,
+    IS_BLACK_LIST_ED_MESSAGE_TEXT
 )
 from bot.sql.users_sql import (
     add_user_to_db
+)
+from bot.sql.blacklist_sql import (
+    check_is_black_list
 )
 
 
@@ -32,6 +36,15 @@ from bot.sql.users_sql import (
     ~Filters.chat(AUTH_USERS)
 )
 async def on_pm_s(_, message: Message):
+    check_ban = check_is_black_list(message.from_user.id)
+    if check_ban:
+        await message.reply_text(
+            text=IS_BLACK_LIST_ED_MESSAGE_TEXT.format(
+                reason=check_ban.reason
+            )
+        )
+        return
+
     fwded_mesg = await message.forward(
         AUTH_USERS[0]
     )
