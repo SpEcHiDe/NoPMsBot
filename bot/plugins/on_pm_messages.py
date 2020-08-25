@@ -17,7 +17,9 @@
 
 from pyrogram import (
     Client,
-    Filters,
+    filters
+)
+from pyrogram.types import (
     Message
 )
 from bot import (
@@ -33,7 +35,7 @@ from bot.sql.blacklist_sql import (
 
 
 @Client.on_message(
-    ~Filters.chat(AUTH_USERS)
+    ~filters.chat(AUTH_USERS)
 )
 async def on_pm_s(_, message: Message):
     check_ban = check_is_black_list(message.from_user.id)

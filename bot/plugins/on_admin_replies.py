@@ -17,7 +17,9 @@
 
 from pyrogram import (
     Client,
-    Filters,
+    filters
+)
+from pyrogram.types import (
     Message
 )
 from bot import (
@@ -42,9 +44,9 @@ from bot.sql.blacklist_sql import (
 
 
 @Client.on_message(
-    Filters.chat(AUTH_USERS) &
-    Filters.create(
-        lambda _, message: message.reply_to_message and
+    filters.chat(AUTH_USERS) &
+    filters.create(
+        lambda flt, client, message: message.reply_to_message and
         message.reply_to_message.from_user.is_self
     )
 )

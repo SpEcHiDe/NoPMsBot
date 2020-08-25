@@ -17,7 +17,9 @@
 
 from pyrogram import (
     Client,
-    Filters,
+    filters
+)
+from pyrogram.types import (
     Message
 )
 from bot import (
@@ -28,8 +30,8 @@ from bot import (
 
 
 @Client.on_message(
-    Filters.command("start") &
-    ~Filters.chat(AUTH_USERS),
+    filters.command("start") &
+    ~filters.chat(AUTH_USERS),
     group=3
 )
 async def num_start_message(_, message: Message):
@@ -40,8 +42,8 @@ async def num_start_message(_, message: Message):
 
 
 @Client.on_message(
-    Filters.command("start") &
-    Filters.chat(AUTH_USERS),
+    filters.command("start") &
+    filters.chat(AUTH_USERS),
     group=7
 )
 async def nimda_start_message(_, message: Message):

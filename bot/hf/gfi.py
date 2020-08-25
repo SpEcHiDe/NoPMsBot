@@ -15,9 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from pyrogram import (
-    Message
-)
+from pyrogram.types import Message
 
 
 def get_file_id(msg: Message):
