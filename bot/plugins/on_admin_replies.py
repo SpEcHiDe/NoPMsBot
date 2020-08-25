@@ -22,9 +22,11 @@ from pyrogram import (
 from pyrogram.types import (
     Message
 )
+from pyrogram.errors.exceptions import UserIsBlocked
 from bot import (
     AUTH_USERS,
     BAN_COMMAND,
+    BOT_WS_BLOCKED_BY_USER,
     DERP_USER_S_TEXT,
     IS_BLACK_LIST_ED_MESSAGE_TEXT,
     IS_UN_BANED_MESSAGE_TEXT,
@@ -113,12 +115,15 @@ async def on_pm_s(client: Client, message: Message):
         )
 
     else:
-        await send_message_to_user(
-            client,
-            message,
-            user_id,
-            reply_message_id
-        )
+        try:
+            await send_message_to_user(
+                client,
+                message,
+                user_id,
+                reply_message_id
+            )
+        except UserIsBlocked:
+            await message.reply_text(BOT_WS_BLOCKED_BY_USER)
 
 
 async def send_message_to_user(

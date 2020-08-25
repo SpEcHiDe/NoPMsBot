@@ -50,6 +50,8 @@ You can add multiple IDs seperated by space.
 
 * `IS_UN_BANED_MESSAGE_TEXT`: The message to be displayed to the user, when an administrator unbans them from the bot.
 
+* `BOT_WS_BLOCKED_BY_USER`: The message to be displayed to the administrator, if bot was blocked by the user.
+
 
 ## How to Install Database ?
 

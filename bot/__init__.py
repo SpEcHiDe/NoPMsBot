@@ -99,3 +99,8 @@ IS_UN_BANED_MESSAGE_TEXT = get_config(
         "<u>Reason</u>: <code>{reason}</code>"
     )
 )
+# message to show if bot was blocked by user
+BOT_WS_BLOCKED_BY_USER = get_config(
+    "BOT_WS_BLOCKED_BY_USER",
+    "Bot was blocked by the user."
+)
