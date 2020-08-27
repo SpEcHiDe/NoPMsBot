@@ -56,7 +56,7 @@ async def on_pm_s(client: Client, message: Message):
     user_id, reply_message_id = get_user_id(
         message.reply_to_message.message_id
     )
-    recvd_text = message.text.html + " "
+    recvd_text = (message.text and message.text.html) or " "
 
     cmnd_message, ban_un_reason = recvd_text.split(" ", 1)
     cmnd_message = cmnd_message.strip()
