@@ -50,4 +50,8 @@ def get_file_id(msg: Message):
             content = msg.video_note.file_id
             data_type = msg.video_note
 
+        elif msg.animation:
+            content = msg.animation.file_id
+            data_type = msg.animation
+
     return data_type, content
