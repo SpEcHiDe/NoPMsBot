@@ -50,25 +50,17 @@ START_OTHER_USERS_TEXT = get_config(
     "START_OTHER_USERS_TEXT",
     (
         "Hi. ☺️\n"
-        "Thank you for using me 😬\n\n"
-        "This is an Open Source Project available on "
-        "https://github.com/sudoshell/NoPMsBot\n\n\n"
-        "If you are the owner of this bot, "
-        "and are seeing this message 🤦‍♂️, "
-        "means that you have not set up "
-        "the ENVironment variables properly "
-        "for the bot to function.\n\n\n"
-        "ℹ️ Subscribe @SpEcHlDe if you 😍 using this bot❗️❣️"
+        "You can contact the admins of @Foundation_9and10 through this bot.😬\n\n"
+        "ℹ️ Join @Foundation_9and10 if you wish to use this bot❗️❣️"
     )
 )
 # check online status of your bot
 ONLINE_CHECK_START_TEXT = get_config(
     "ONLINE_CHECK_START_TEXT",
     (
-        "i am online <b>master</b>\n\n"
-        "This is an Open Source Project available on "
-        "https://github.com/sudoshell/NoPMsBot\n\n\n"
-        "ℹ️ Subscribe @SpEcHlDe if you 😍 using this bot❗️❣️"
+        "I am online <b>master</b>\n\n"
+        "You can contact the admins here.\n\n\n"
+        "ℹ️ Join @Foundation_9and10 now if you are using this bot❗️❣️"
     )
 )
 # IDEKWBYRW
