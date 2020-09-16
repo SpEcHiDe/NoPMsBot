@@ -26,8 +26,4 @@ def get_file_id(msg: Message):
                              'audio', 'voice', 'video', 'video_note'):
             obj = getattr(msg, message_type)
             if obj:
-                content = obj.file_id
-                data_type = obj
-
-        
-    return data_type, content
+                return obj, obj.file_id
