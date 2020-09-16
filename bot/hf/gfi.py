@@ -27,7 +27,7 @@ def get_file_id(msg: Message):
             obj = getattr(msg, message_type)
             if obj:
                 content = obj.file_id
-                data_type = obi
+                data_type = obj
 
         
     return data_type, content
