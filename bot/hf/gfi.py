@@ -22,36 +22,12 @@ def get_file_id(msg: Message):
     data_type = None
     content = None
     if msg.media:
-        if msg.sticker:
-            content = msg.sticker.file_id
-            data_type = msg.sticker
+        for message_type in ('sticker', 'document', 'photo',
+                             'audio', 'voice', 'video', 'video_note'):
+            obj = getattr(msg, message_type)
+            if obj:
+                content = obj.file_id
+                data_type = obi
 
-        elif msg.document:
-            content = msg.document.file_id
-            data_type = msg.document
-
-        elif msg.photo:
-            content = msg.photo.file_id
-            data_type = msg.photo
-
-        elif msg.audio:
-            content = msg.audio.file_id
-            data_type = msg.audio
-
-        elif msg.voice:
-            content = msg.voice.file_id
-            data_type = msg.voice
-
-        elif msg.video:
-            content = msg.video.file_id
-            data_type = msg.video
-
-        elif msg.video_note:
-            content = msg.video_note.file_id
-            data_type = msg.video_note
-
-        elif msg.animation:
-            content = msg.animation.file_id
-            data_type = msg.animation
-
+        
     return data_type, content
