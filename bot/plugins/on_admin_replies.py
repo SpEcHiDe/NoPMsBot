@@ -31,6 +31,7 @@ from bot import (
     IS_BLACK_LIST_ED_MESSAGE_TEXT,
     IS_UN_BANED_MESSAGE_TEXT,
     REASON_DE_LIMIT_ER,
+    START_COMMAND,
     UN_BAN_COMMAND
 )
 from bot.hf.gfi import (
@@ -46,6 +47,7 @@ from bot.sql.blacklist_sql import (
 
 
 @Client.on_message(
+    ~filters.command(START_COMMAND) &
     filters.chat(AUTH_USERS) &
     filters.create(
         lambda flt, client, message: message.reply_to_message and

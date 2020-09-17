@@ -24,7 +24,8 @@ from pyrogram.types import (
 )
 from bot import (
     AUTH_USERS,
-    IS_BLACK_LIST_ED_MESSAGE_TEXT
+    IS_BLACK_LIST_ED_MESSAGE_TEXT,
+    START_COMMAND
 )
 from bot.sql.users_sql import (
     add_user_to_db
@@ -35,6 +36,7 @@ from bot.sql.blacklist_sql import (
 
 
 @Client.on_message(
+    ~filters.command(START_COMMAND) &
     ~filters.chat(AUTH_USERS)
 )
 async def on_pm_s(_, message: Message):

@@ -25,14 +25,14 @@ from pyrogram.types import (
 from bot import (
     AUTH_USERS,
     ONLINE_CHECK_START_TEXT,
+    START_COMMAND,
     START_OTHER_USERS_TEXT
 )
 
 
 @Client.on_message(
-    filters.command("start") &
-    ~filters.chat(AUTH_USERS),
-    group=3
+    filters.command(START_COMMAND) &
+    ~filters.chat(AUTH_USERS)
 )
 async def num_start_message(_, message: Message):
     await message.reply_text(
@@ -42,9 +42,8 @@ async def num_start_message(_, message: Message):
 
 
 @Client.on_message(
-    filters.command("start") &
-    filters.chat(AUTH_USERS),
-    group=7
+    filters.command(START_COMMAND) &
+    filters.chat(AUTH_USERS)
 )
 async def nimda_start_message(_, message: Message):
     await message.reply_text(
