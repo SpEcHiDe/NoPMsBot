@@ -13,6 +13,14 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+#### The Legacy Way
+
+- if you want to run this bot in your GNU/Linux System
+- Run `python bot` and interactively fill all the configuration variables. 
+- Read below, to understand what the configuration variables does.
+- Run `bash run.sh` to start the bot.
+
+
 ## ENVironment VARiables
 
 #### Mandatory Environment Variables
@@ -107,5 +115,5 @@ repeat for your username, password, hostname (localhost?), port (5432?), and db 
 
 ## Credits, and Thanks to
 
-* [me](https://github.com/sudoshell/NoPMsBot)
+* [ThankTelegram](https://telegram.dog/ThankTelegram)
 * [Dan Tès](https://telegram.dog/haskell) for his [Pyrogram Library](https://github.com/pyrogram/pyrogram)

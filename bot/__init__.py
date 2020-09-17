@@ -62,7 +62,7 @@ START_OTHER_USERS_TEXT = get_config(
         "Hi. ☺️\n"
         "Thank you for using me 😬\n\n"
         "This is an Open Source Project available on "
-        "https://github.com/sudoshell/NoPMsBot\n\n\n"
+        "https://github.com/SpEcHIDe/NoPMsBot\n\n\n"
         "If you are the owner of this bot, "
         "and are seeing this message 🤦‍♂️, "
         "means that you have not set up "
@@ -77,7 +77,7 @@ ONLINE_CHECK_START_TEXT = get_config(
     (
         "i am online <b>master</b>\n\n"
         "This is an Open Source Project available on "
-        "https://github.com/sudoshell/NoPMsBot\n\n\n"
+        "https://github.com/SpEcHiDe/NoPMsBot\n\n\n"
         "ℹ️ Subscribe @SpEcHlDe if you 😍 using this bot❗️❣️"
     )
 )

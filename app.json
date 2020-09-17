@@ -12,7 +12,7 @@
     "channel",
     "administrators"
   ],
-  "repository": "https://github.com/sudoshell/NoPMsBot",
+  "repository": "https://github.com/SpEcHIDe/NoPMsBot",
   "website": "https://telegram.dog/SpEcHlDe",
   "success_url": "https://t.me/SpEcHlDe/571",
   "env": {
