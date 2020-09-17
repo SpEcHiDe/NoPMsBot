@@ -20,6 +20,8 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #  SOFTWARE.
 
+""" copied from PyroGram Assistant """
+
 from bot.bot import Bot
 
 if __name__ == "__main__":

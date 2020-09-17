@@ -47,6 +47,14 @@ DB_URI = get_config(
 # given the amount of sql data accesses,
 # and the way python asynchronous calls work.
 TG_BOT_WORKERS = int(get_config("TG_BOT_WORKERS", "4"))
+#
+COMMM_AND_PRE_FIX = get_config("COMMM_AND_PRE_FIX", "/")
+#
+BAN_COMMAND = get_config("BAN_COMMAND", "ban")
+#
+UN_BAN_COMMAND = get_config("UN_BAN_COMMAND", "unban")
+# start command
+START_COMMAND = get_config("START_COMMAND", "start")
 # /start message when other users start your bot
 START_OTHER_USERS_TEXT = get_config(
     "START_OTHER_USERS_TEXT",
@@ -78,7 +86,6 @@ DERP_USER_S_TEXT = get_config(
     "DERP_USER_S_TEXT",
     "😐"
 )
-BAN_COMMAND = "/ban"
 # message to show when user is banned
 IS_BLACK_LIST_ED_MESSAGE_TEXT = get_config(
     "IS_BLACK_LIST_ED_MESSAGE_TEXT",
@@ -92,7 +99,6 @@ REASON_DE_LIMIT_ER = get_config(
     "REASON_DE_LIMIT_ER",
     "\n\n"
 )
-UN_BAN_COMMAND = "/unban"
 # message to show when user is unbanned
 IS_UN_BANED_MESSAGE_TEXT = get_config(
     "IS_UN_BANED_MESSAGE_TEXT",
@@ -106,7 +112,6 @@ BOT_WS_BLOCKED_BY_USER = get_config(
     "BOT_WS_BLOCKED_BY_USER",
     "Bot was blocked by the user."
 )
-
 # path to store LOG files
 LOG_FILE_ZZGEVC = get_config("LOG_FILE_ZZGEVC", "NoPMsBot.log")
 
@@ -127,7 +132,5 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
 def LOGGER(name: str) -> logging.Logger:
+    """ get a Logger object """
     return logging.getLogger(name)
-
-# start command
-START_COMMAND = get_config("START_COMMAND", "start")

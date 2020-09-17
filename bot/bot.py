@@ -55,4 +55,4 @@ class Bot(Client):
 
     async def stop(self, *args):
         await super().stop()
-        print("NoPMsBot stopped. Bye.")
+        self.LOGGER(__name__).info("NoPMsBot stopped. Bye.")

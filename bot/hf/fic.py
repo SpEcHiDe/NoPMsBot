@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# (c) Shrimadhav U K
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -14,26 +15,21 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from pyrogram.types import Message
+from pyrogram import (
+    Client,
+    filters
+)
+from pyrogram.types import (
+    Message
+)
 
 
-def get_file_id(msg: Message):
-    if msg.media:
-        for message_type in (
-            "photo",
-            "animation",
-            "audio",
-            "document",
-            "video",
-            "video_note",
-            "voice",
-            # "contact",
-            # "dice",
-            # "poll",
-            # "location",
-            # "venue",
-            "sticker"
-        ):
-            obj = getattr(msg, message_type)
-            if obj:
-                return obj, obj.file_id
+async def func(flt, client: Client, message: Message):
+    if message.reply_to_message:
+        if message.reply_to_message.from_user:
+            if message.reply_to_message.from_user.is_self:
+                return True
+    return False
+
+
+vhkzuoi_repliz_handler = filters.create(func)

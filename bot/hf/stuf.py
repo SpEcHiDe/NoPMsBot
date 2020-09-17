@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# (c) Shrimadhav U K
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -14,26 +15,11 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from pyrogram.types import Message
-
-
-def get_file_id(msg: Message):
-    if msg.media:
-        for message_type in (
-            "photo",
-            "animation",
-            "audio",
-            "document",
-            "video",
-            "video_note",
-            "voice",
-            # "contact",
-            # "dice",
-            # "poll",
-            # "location",
-            # "venue",
-            "sticker"
-        ):
-            obj = getattr(msg, message_type)
-            if obj:
-                return obj, obj.file_id
+def get_tle_mof_t(recvd_text: str) -> (str, str):
+    try:
+        cmnd_message, reason = recvd_text.split(" ", 1)
+    except ValueError:
+        cmnd_message, reason = recvd_text, ""
+    cmnd_message = cmnd_message.strip()
+    reason = reason.strip()
+    return cmnd_message, reason

@@ -14,83 +14,60 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
 from pyrogram import (
     Client,
     filters
 )
+from pyrogram.errors.exceptions import UserIsBlocked
 from pyrogram.types import (
     Message
 )
-from pyrogram.errors.exceptions import UserIsBlocked
 from bot import (
     AUTH_USERS,
-    BAN_COMMAND,
     BOT_WS_BLOCKED_BY_USER,
-    DERP_USER_S_TEXT,
-    START_COMMAND,
+    IS_UN_BANED_MESSAGE_TEXT,
+    REASON_DE_LIMIT_ER,
     UN_BAN_COMMAND
 )
 from bot.hf.fic import vhkzuoi_repliz_handler
-from bot.hf.gfi import (
-    get_file_id
-)
-from bot.sql.users_sql import (
-    get_user_id
-)
+from bot.hf.stuf import get_tle_mof_t
+from bot.sql.users_sql import get_user_id
+from bot.sql.blacklist_sql import rem_user_from_bl
 
 
 @Client.on_message(
-    ~filters.command(START_COMMAND) &
-    ~filters.command(BAN_COMMAND) &
-    ~filters.command(UN_BAN_COMMAND) &
+    filters.command(UN_BAN_COMMAND) &
     filters.chat(AUTH_USERS) &
     vhkzuoi_repliz_handler
 )
-async def on_pm_s(client: Client, message: Message):
+async def un_ban_command(client: Client, message: Message):
     user_id, reply_message_id = get_user_id(
         message.reply_to_message.message_id
     )
+    _, unban_reason = get_tle_mof_t(message.text)
+    rem_user_from_bl(user_id)
+    black_list_message = IS_UN_BANED_MESSAGE_TEXT.format(
+        reason=unban_reason
+    )
+    if not unban_reason:
+        black_list_message = black_list_message.split(
+            REASON_DE_LIMIT_ER
+        )[0]
     try:
-        await send_message_to_user(
-            client,
-            message,
-            user_id,
-            reply_message_id
-        )
-    except UserIsBlocked:
-        await message.reply_text(BOT_WS_BLOCKED_BY_USER)
-
-
-async def send_message_to_user(
-    client: Client,
-    message: Message,
-    user_id: int,
-    reply_message_id: int
-):
-    # 🥺 check two conditions 🤔🤔
-    if message.media:
-        _, file_id = get_file_id(message)
-        caption = (
-            message.caption and message.caption.html
-        ) or ""
-        await client.send_cached_media(
-            chat_id=user_id,
-            file_id=file_id,
-            caption=caption,
-            reply_markup=message.reply_markup,
-            disable_notification=True,
-            reply_to_message_id=reply_message_id
-        )
-    else:
-        caption = (
-            message.text and message.text.html
-        ) or DERP_USER_S_TEXT
         await client.send_message(
             chat_id=user_id,
-            text=caption,
+            text=black_list_message,
             disable_web_page_preview=True,
             reply_markup=message.reply_markup,
             disable_notification=True,
             reply_to_message_id=reply_message_id
         )
+    except UserIsBlocked:
+        await message.reply_text(
+            BOT_WS_BLOCKED_BY_USER
+        )
+    await message.reply_text(
+        f"<a href='tg://user?id={user_id}'>"
+        "user"
+        "</a> <b>unbanned</b>."
+    )
