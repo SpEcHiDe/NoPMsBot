@@ -1,49 +1,48 @@
 {
-    "name": "No PMs Bot",
-    "description": "Modular  Telegram Bot powered by @PyroGram!",
-    "logo": "https://telegra.ph/file/55501e726922e79b8eea9.png",
-    "keywords": [
-      "telegram",
-      "bot",
-      "plugin",
-      "modular",
-      "productivity",
-      "relay",
-      "channel",
-      "administrators"
-    ],
-    "repository": "https://github.com/sudoshell/NoPMsBot",
-    "website": "https://telegram.dog/SpEcHlDe",
-    "success_url": "https://t.me/SpEcHlDe/571",
-    "env": {
-      "APP_ID": {
-        "description": "Get this value from my.telegram.org! Please do not steal"
-      },
-      "API_HASH": {
-        "description": "Get this value from my.telegram.org! Please do not steal"
-      },
-      "TG_BOT_TOKEN": {
-        "description": "Obtain a Telegram bot token by contacting @BotFather"
-      },
-      "AUTH_USERS": {
-        "description": "List down the user IDs who should have permission to use and reply to users, seperated by SPACE. To get user ids, send /id command to Telegram @OwnErObOT",
-        "value": "7351948 500346573 606342588 653184647 751003349 752396210 797179106 804216742 830068297 873236756"
-      }
+  "name": "No PMs Bot",
+  "description": "Modular  Telegram Bot powered by @PyroGram!",
+  "logo": "https://telegra.ph/file/55501e726922e79b8eea9.png",
+  "keywords": [
+    "telegram",
+    "bot",
+    "plugin",
+    "modular",
+    "productivity",
+    "relay",
+    "channel",
+    "administrators"
+  ],
+  "repository": "https://github.com/sudoshell/NoPMsBot",
+  "website": "https://telegram.dog/SpEcHlDe",
+  "success_url": "https://t.me/SpEcHlDe/571",
+  "env": {
+    "APP_ID": {
+      "description": "Get this value from my.telegram.org! Please do not steal"
     },
-    "addons": [{
-      "plan": "heroku-postgresql",
-      "options": {
-        "version": "12"
-      }
-    }],
-    "buildpacks": [{
-      "url": "heroku/python"
-    }],
-    "formation": {
-      "worker": {
-        "quantity": 1,
-        "size": "free"
-      }
+    "API_HASH": {
+      "description": "Get this value from my.telegram.org! Please do not steal"
+    },
+    "TG_BOT_TOKEN": {
+      "description": "Obtain a Telegram bot token by contacting @BotFather"
+    },
+    "AUTH_USERS": {
+      "description": "List down the user IDs who should have permission to use and reply to users, seperated by SPACE. To get user ids, send /id command to Telegram @OwnErObOT",
+      "value": "7351948 500346573 606342588 653184647 751003349 752396210 797179106 804216742 830068297 873236756"
+    }
+  },
+  "addons": [{
+    "plan": "heroku-postgresql",
+    "options": {
+      "version": "12"
+    }
+  }],
+  "buildpacks": [{
+    "url": "heroku/python"
+  }],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
     }
   }
-  
+}

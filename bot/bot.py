@@ -31,6 +31,7 @@ from . import (
 
 class Bot(Client):
     """ modded client for NoPMsBot """
+
     def __init__(self):
         super().__init__(
             ":memory:",

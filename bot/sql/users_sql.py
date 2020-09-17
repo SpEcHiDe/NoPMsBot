@@ -46,14 +46,14 @@ class Users(BASE):
 Users.__table__.create(checkfirst=True)
 
 
-def add_user_to_db(message_id, chat_id, um_id):
+def add_user_to_db(message_id: int, chat_id: int, um_id: int):
     """ add the message to the table """
     __user = Users(message_id, str(chat_id), um_id)
     SESSION.add(__user)
     SESSION.commit()
 
 
-def get_user_id(message_id):
+def get_user_id(message_id: int):
     """ get the user_id from the message_id """
     try:
         s__ = SESSION.query(Users).get(str(message_id))

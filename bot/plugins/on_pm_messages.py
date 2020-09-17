@@ -24,6 +24,7 @@ from pyrogram.types import (
 )
 from bot import (
     AUTH_USERS,
+    COMMM_AND_PRE_FIX,
     IS_BLACK_LIST_ED_MESSAGE_TEXT,
     START_COMMAND
 )
@@ -36,11 +37,11 @@ from bot.sql.blacklist_sql import (
 
 
 @Client.on_message(
-    ~filters.command(START_COMMAND) &
+    ~filters.command(START_COMMAND, COMMM_AND_PRE_FIX) &
     ~filters.chat(AUTH_USERS)
 )
 async def on_pm_s(_, message: Message):
-    check_ban = check_is_black_list(message.from_user.id)
+    check_ban = check_is_black_list(message)
     if check_ban:
         await message.reply_text(
             text=IS_BLACK_LIST_ED_MESSAGE_TEXT.format(

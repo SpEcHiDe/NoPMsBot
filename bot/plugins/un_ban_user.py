@@ -25,6 +25,7 @@ from pyrogram.types import (
 from bot import (
     AUTH_USERS,
     BOT_WS_BLOCKED_BY_USER,
+    COMMM_AND_PRE_FIX,
     IS_UN_BANED_MESSAGE_TEXT,
     REASON_DE_LIMIT_ER,
     UN_BAN_COMMAND
@@ -36,7 +37,7 @@ from bot.sql.blacklist_sql import rem_user_from_bl
 
 
 @Client.on_message(
-    filters.command(UN_BAN_COMMAND) &
+    filters.command(UN_BAN_COMMAND, COMMM_AND_PRE_FIX) &
     filters.chat(AUTH_USERS) &
     vhkzuoi_repliz_handler
 )

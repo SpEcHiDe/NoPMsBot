@@ -26,6 +26,7 @@ from bot import (
     AUTH_USERS,
     BAN_COMMAND,
     BOT_WS_BLOCKED_BY_USER,
+    COMMM_AND_PRE_FIX,
     IS_BLACK_LIST_ED_MESSAGE_TEXT,
     REASON_DE_LIMIT_ER
 )
@@ -36,7 +37,7 @@ from bot.sql.blacklist_sql import add_user_to_bl
 
 
 @Client.on_message(
-    filters.command(BAN_COMMAND) &
+    filters.command(BAN_COMMAND, COMMM_AND_PRE_FIX) &
     filters.chat(AUTH_USERS) &
     vhkzuoi_repliz_handler
 )

@@ -27,6 +27,7 @@ from bot import (
     AUTH_USERS,
     BAN_COMMAND,
     BOT_WS_BLOCKED_BY_USER,
+    COMMM_AND_PRE_FIX,
     DERP_USER_S_TEXT,
     START_COMMAND,
     UN_BAN_COMMAND
@@ -41,9 +42,9 @@ from bot.sql.users_sql import (
 
 
 @Client.on_message(
-    ~filters.command(START_COMMAND) &
-    ~filters.command(BAN_COMMAND) &
-    ~filters.command(UN_BAN_COMMAND) &
+    ~filters.command(START_COMMAND, COMMM_AND_PRE_FIX) &
+    ~filters.command(BAN_COMMAND, COMMM_AND_PRE_FIX) &
+    ~filters.command(UN_BAN_COMMAND, COMMM_AND_PRE_FIX) &
     filters.chat(AUTH_USERS) &
     vhkzuoi_repliz_handler
 )
