@@ -19,39 +19,22 @@ from pyrogram.types import Message
 
 
 def get_file_id(msg: Message):
-    data_type = None
-    content = None
     if msg.media:
-        if msg.sticker:
-            content = msg.sticker.file_id
-            data_type = msg.sticker
-
-        elif msg.document:
-            content = msg.document.file_id
-            data_type = msg.document
-
-        elif msg.photo:
-            content = msg.photo.file_id
-            data_type = msg.photo
-
-        elif msg.audio:
-            content = msg.audio.file_id
-            data_type = msg.audio
-
-        elif msg.voice:
-            content = msg.voice.file_id
-            data_type = msg.voice
-
-        elif msg.video:
-            content = msg.video.file_id
-            data_type = msg.video
-
-        elif msg.video_note:
-            content = msg.video_note.file_id
-            data_type = msg.video_note
-
-        elif msg.animation:
-            content = msg.animation.file_id
-            data_type = msg.animation
-
-    return data_type, content
+        for message_type in (
+            "photo",
+            "animation",
+            "audio",
+            "document",
+            "video",
+            "video_note",
+            "voice",
+            # "contact",
+            # "dice",
+            # "poll",
+            # "location",
+            # "venue",
+            "sticker"
+        ):
+            obj = getattr(msg, message_type)
+            if obj:
+                return obj, obj.file_id
