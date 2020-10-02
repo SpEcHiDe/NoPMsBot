@@ -33,6 +33,7 @@ from bot import (
     UN_BAN_COMMAND
 )
 from bot.hf.fic import vhkzuoi_repliz_handler
+from bot.hf.flifi import uszkhvis_chats_ahndler
 from bot.hf.gfi import (
     get_file_id
 )
@@ -45,7 +46,7 @@ from bot.sql.users_sql import (
     ~filters.command(START_COMMAND, COMMM_AND_PRE_FIX) &
     ~filters.command(BAN_COMMAND, COMMM_AND_PRE_FIX) &
     ~filters.command(UN_BAN_COMMAND, COMMM_AND_PRE_FIX) &
-    filters.chat(AUTH_CHANNEL) &
+    uszkhvis_chats_ahndler([AUTH_CHANNEL]) &
     vhkzuoi_repliz_handler
 )
 async def on_pm_s(client: Client, message: Message):

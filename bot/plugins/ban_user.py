@@ -31,6 +31,7 @@ from bot import (
     REASON_DE_LIMIT_ER
 )
 from bot.hf.fic import vhkzuoi_repliz_handler
+from bot.hf.flifi import uszkhvis_chats_ahndler
 from bot.hf.stuf import get_tle_mof_t
 from bot.sql.users_sql import get_user_id
 from bot.sql.blacklist_sql import add_user_to_bl
@@ -38,7 +39,7 @@ from bot.sql.blacklist_sql import add_user_to_bl
 
 @Client.on_message(
     filters.command(BAN_COMMAND, COMMM_AND_PRE_FIX) &
-    filters.chat(AUTH_CHANNEL) &
+    uszkhvis_chats_ahndler([AUTH_CHANNEL]) &
     vhkzuoi_repliz_handler
 )
 async def ban_command(client: Client, message: Message):

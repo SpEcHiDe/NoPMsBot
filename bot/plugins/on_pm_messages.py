@@ -28,6 +28,7 @@ from bot import (
     IS_BLACK_LIST_ED_MESSAGE_TEXT,
     START_COMMAND
 )
+from bot.hf.flifi import uszkhvis_chats_ahndler
 from bot.sql.users_sql import (
     add_user_to_db
 )
@@ -38,7 +39,7 @@ from bot.sql.blacklist_sql import (
 
 @Client.on_message(
     ~filters.command(START_COMMAND, COMMM_AND_PRE_FIX) &
-    ~filters.chat(AUTH_CHANNEL) &
+    ~uszkhvis_chats_ahndler([AUTH_CHANNEL]) &
     filters.incoming
 )
 async def on_pm_s(_, message: Message):

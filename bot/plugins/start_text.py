@@ -29,11 +29,12 @@ from bot import (
     START_COMMAND,
     START_OTHER_USERS_TEXT
 )
+from bot.hf.flifi import uszkhvis_chats_ahndler
 
 
 @Client.on_message(
     filters.command(START_COMMAND, COMMM_AND_PRE_FIX) &
-    ~filters.chat(AUTH_CHANNEL)
+    ~uszkhvis_chats_ahndler([AUTH_CHANNEL])
 )
 async def num_start_message(_, message: Message):
     await message.reply_text(
@@ -44,7 +45,7 @@ async def num_start_message(_, message: Message):
 
 @Client.on_message(
     filters.command(START_COMMAND, COMMM_AND_PRE_FIX) &
-    filters.chat(AUTH_CHANNEL)
+    uszkhvis_chats_ahndler([AUTH_CHANNEL])
 )
 async def nimda_start_message(_, message: Message):
     await message.reply_text(

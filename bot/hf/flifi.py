@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
+from typing import List, Union
 from pyrogram import (
     Client,
     filters
@@ -24,16 +24,13 @@ from pyrogram.types import (
 )
 
 
-def func(flt, client: Client, message: Message):
-    if message.reply_to_message:
-        if message.reply_to_message.from_user:
-            if message.reply_to_message.from_user.is_self:
-                return True
-        if message.chat.type == "channel":
-            # i really don't know,
-            # how to correctly handle it
-            return True
-    return False
-
-
-vhkzuoi_repliz_handler = filters.create(func)
+def uszkhvis_chats_ahndler(chats: List[Union[str, int]]):
+    async def func(flt, client: Client, message: Message):
+        chats = flt.chats
+        return bool(
+            message.chat and (
+                message.chat.id in chats
+            )
+        )
+    # "chats" kwarg is accessed with "flt.chats" above
+    return filters.create(func, chats=chats)
