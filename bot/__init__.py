@@ -28,12 +28,12 @@ APP_ID = get_config("APP_ID", should_prompt=True)
 # get a token from @BotFather
 TG_BOT_TOKEN = get_config("TG_BOT_TOKEN", should_prompt=True)
 # array to store the channel ID who are authorized to use the bot
-AUTH_USERS = list(set(
-    int(x) for x in get_config(
-        "AUTH_USERS",
+AUTH_CHANNEL = int(get_config(
+        "AUTH_CHANNEL",
+        "-100",
         should_prompt=True
-    ).split()
-))
+    )
+)
 # sqlalchemy Database for the bot to operate
 DB_URI = get_config(
     "DATABASE_URL",

@@ -24,7 +24,7 @@ from pyrogram.types import (
 )
 from pyrogram.errors.exceptions import UserIsBlocked
 from bot import (
-    AUTH_USERS,
+    AUTH_CHANNEL,
     BAN_COMMAND,
     BOT_WS_BLOCKED_BY_USER,
     COMMM_AND_PRE_FIX,
@@ -45,7 +45,7 @@ from bot.sql.users_sql import (
     ~filters.command(START_COMMAND, COMMM_AND_PRE_FIX) &
     ~filters.command(BAN_COMMAND, COMMM_AND_PRE_FIX) &
     ~filters.command(UN_BAN_COMMAND, COMMM_AND_PRE_FIX) &
-    filters.chat(AUTH_USERS) &
+    filters.chat(AUTH_CHANNEL) &
     vhkzuoi_repliz_handler
 )
 async def on_pm_s(client: Client, message: Message):

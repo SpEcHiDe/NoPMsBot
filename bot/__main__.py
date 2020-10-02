@@ -31,7 +31,7 @@ except ImportError:
         "API_HASH",
         "APP_ID",
         "TG_BOT_TOKEN",
-        "AUTH_USERS",
+        "AUTH_CHANNEL",
         "DATABASE_URL"
     ]
     optional_vars = [

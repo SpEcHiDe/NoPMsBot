@@ -34,9 +34,8 @@ There is an [ongoing issue](https://github.com/SpEcHiDe/NoPMsBot/issues/4) which
 * `API_HASH`: Get these two values from [my.telegram.org/apps](https://my.telegram.org/apps).
   * N.B.: if Telegram is blocked by your ISP, try our [Telegram bot](https://telegram.dog/UseTGXBot) to get the IDs.
 
-* `AUTH_USERS`:
+* `AUTH_CHANNEL`:
 Create a Super Group in Telegram, add `@GoogleIMGBot` to the group, and send /id in the chat, to get this value.
-You can add multiple IDs seperated by space.
 
 * `DATABASE_URL`: ~~if you are using Heroku, this value is automatically filled by the Postgres Plugin.~~ if you are not using Heroku, Read the guide on how to Install Database?, below.
 

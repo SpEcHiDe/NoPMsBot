@@ -25,9 +25,8 @@
     "TG_BOT_TOKEN": {
       "description": "Obtain a Telegram bot token by contacting @BotFather"
     },
-    "AUTH_USERS": {
-      "description": "List down the user IDs who should have permission to use and reply to users, seperated by SPACE. To get user ids, send /id command to Telegram @OwnErObOT",
-      "value": "7351948 500346573 606342588 653184647 751003349 752396210 797179106 804216742 830068297 873236756"
+    "AUTH_CHANNEL": {
+      "description": "List down the user IDs who should have permission to use and reply to users, seperated by SPACE. To get user ids, send /id command to Telegram @OwnErObOT"
     }
   },
   "addons": [{

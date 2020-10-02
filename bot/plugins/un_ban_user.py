@@ -23,7 +23,7 @@ from pyrogram.types import (
     Message
 )
 from bot import (
-    AUTH_USERS,
+    AUTH_CHANNEL,
     BOT_WS_BLOCKED_BY_USER,
     COMMM_AND_PRE_FIX,
     IS_UN_BANED_MESSAGE_TEXT,
@@ -38,7 +38,7 @@ from bot.sql.blacklist_sql import rem_user_from_bl
 
 @Client.on_message(
     filters.command(UN_BAN_COMMAND, COMMM_AND_PRE_FIX) &
-    filters.chat(AUTH_USERS) &
+    filters.chat(AUTH_CHANNEL) &
     vhkzuoi_repliz_handler
 )
 async def un_ban_command(client: Client, message: Message):

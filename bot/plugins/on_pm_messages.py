@@ -23,7 +23,7 @@ from pyrogram.types import (
     Message
 )
 from bot import (
-    AUTH_USERS,
+    AUTH_CHANNEL,
     COMMM_AND_PRE_FIX,
     IS_BLACK_LIST_ED_MESSAGE_TEXT,
     START_COMMAND
@@ -38,7 +38,7 @@ from bot.sql.blacklist_sql import (
 
 @Client.on_message(
     ~filters.command(START_COMMAND, COMMM_AND_PRE_FIX) &
-    ~filters.chat(AUTH_USERS) &
+    ~filters.chat(AUTH_CHANNEL) &
     filters.incoming
 )
 async def on_pm_s(_, message: Message):
@@ -52,7 +52,7 @@ async def on_pm_s(_, message: Message):
         return
 
     fwded_mesg = await message.forward(
-        AUTH_USERS[0]
+        AUTH_CHANNEL
     )
     # just store, we don't need to SPAM users
     # mimick LiveGramBot, not @LimitatiBot ..!
