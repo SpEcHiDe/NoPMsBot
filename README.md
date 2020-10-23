@@ -18,10 +18,11 @@ There is an [ongoing issue](https://github.com/SpEcHiDe/NoPMsBot/issues/4) which
 
 #### The Legacy Way
 
-- if you want to run this bot in your GNU/Linux System
-- Run `python bot` and interactively fill all the configuration variables. 
+- if you want to run this bot in your GNU/Linux System,
+- `mv sample_config.env config.env`
+- Edit the `config.env` with the appropriate values.
 - Read below, to understand what the configuration variables does.
-- Run `bash run.sh` to start the bot.
+- Run `python -m bot`.
 
 
 ## ENVironment VARiables
@@ -46,9 +47,9 @@ Create a Super Group in Telegram, add `@GoogleIMGBot` to the group, and send /id
 
 * `COMMM_AND_PRE_FIX`: The command prefix. Telegram, by default, recommeds the use of `/`, which is the default prefix.
 
-* `BAN_COMMAND`: The command that can be used by administrators of the bot to ban users. The default is `/ban`.
+* `BAN_COMMAND`: The command that can be used by administrators of the bot to ban users. The default is `ban`.
 
-* `UN_BAN_COMMAND`: The command that can be used by administrators of the bot to unban users. The default is `/unban`.
+* `UN_BAN_COMMAND`: The command that can be used by administrators of the bot to unban users. The default is `unban`.
 
 * `START_COMMAND`: The command to check if the bot is alive, or for users to start the robot.
 
