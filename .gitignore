@@ -1,4 +1,5 @@
 venv
-config.py
+config.env
 __pycache__
 **/*.session
+**/*.log

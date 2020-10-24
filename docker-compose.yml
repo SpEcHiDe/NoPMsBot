@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=dbname
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=example
+    volumes:
+      - pgdata:/var/lib/posgresql/data
+  nopmsbot:
+    build: .
+    command: python -m bot
+    depends_on:
+      - db
+    restart: on-failure
+    environment:
+        DATABASE_URL: postgres://root:example@db/dbname
+    env_file:
+      - config.env
+volumes:
+  pgdata:
