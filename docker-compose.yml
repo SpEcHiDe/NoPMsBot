@@ -9,7 +9,8 @@ services:
     volumes:
       - pgdata:/var/lib/posgresql/data
   nopmsbot:
-    build: .
+    build:
+      context: https://github.com/SpEcHiDe/NoPMsBot.git#master
     command: python -m bot
     depends_on:
       - db
