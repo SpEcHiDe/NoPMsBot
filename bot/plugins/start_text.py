@@ -26,24 +26,24 @@ from bot import (
     AUTH_CHANNEL,
     COMMM_AND_PRE_FIX,
     ONLINE_CHECK_START_TEXT,
-    START_COMMAND,
-    START_OTHER_USERS_TEXT
+    START_COMMAND
 )
+from bot.bot import Bot
 from bot.hf.flifi import uszkhvis_chats_ahndler
 
 
-@Client.on_message(
+@Bot.on_message(
     filters.command(START_COMMAND, COMMM_AND_PRE_FIX) &
     ~uszkhvis_chats_ahndler([AUTH_CHANNEL])
 )
-async def num_start_message(_, message: Message):
+async def num_start_message(client: Bot, message: Message):
     await message.reply_text(
-        START_OTHER_USERS_TEXT,
+        client.commandi[START_COMMAND],
         quote=True
     )
 
 
-@Client.on_message(
+@Bot.on_message(
     filters.command(START_COMMAND, COMMM_AND_PRE_FIX) &
     uszkhvis_chats_ahndler([AUTH_CHANNEL])
 )

@@ -58,22 +58,24 @@ BAN_COMMAND = get_config("BAN_COMMAND", "ban")
 UN_BAN_COMMAND = get_config("UN_BAN_COMMAND", "unban")
 # start command
 START_COMMAND = get_config("START_COMMAND", "start")
-# /start message when other users start your bot
-START_OTHER_USERS_TEXT = get_config(
-    "START_OTHER_USERS_TEXT",
-    (
-        "Hi. ☺️\n"
-        "Thank you for using me 😬\n\n"
-        "This is an Open Source Project available on "
-        "https://github.com/SpEcHIDe/NoPMsBot\n\n\n"
-        "If you are the owner of this bot, "
-        "and are seeing this message 🤦‍♂️, "
-        "means that you have not set up "
-        "the ENVironment variables properly "
-        "for the bot to function.\n\n\n"
-        "ℹ️ Subscribe @SpEcHlDe if you 😍 using this bot❗️❣️"
-    )
+# default message in-case of None types
+DEFAULT_START_TEXT = (
+    "Hi. ☺️\n"
+    "Thank you for using me 😬\n\n"
+    "This is an Open Source Project available on "
+    "https://github.com/SpEcHIDe/NoPMsBot\n\n\n"
+    "If you are the owner of this bot, "
+    "and are seeing this message 🤦‍♂️, "
+    "means that you have not set up "
+    "the ENVironment variables properly "
+    "for the bot to function.\n\n\n"
+    "ℹ️ Subscribe @SpEcHlDe if you 😍 using this bot❗️❣️"
 )
+# /start message when other users start your bot
+START_OTHER_USERS_TEXT = int(get_config(
+    "START_OTHER_USERS_TEXT",
+    0
+))
 # check online status of your bot
 ONLINE_CHECK_START_TEXT = get_config(
     "ONLINE_CHECK_START_TEXT",
