@@ -60,3 +60,13 @@ def get_user_id(message_id: int):
         return int(s__.chat_id), s__.um_id
     finally:
         SESSION.close()
+
+
+def get_chek_dmid(um_id: int):
+    """ get the deleted user_id from the um_id """
+    try:
+        return SESSION.query(Users).filter(Users.um_id == um_id).one()
+    finally:
+        SESSION.close()
+
+

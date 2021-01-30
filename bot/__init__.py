@@ -86,6 +86,18 @@ ONLINE_CHECK_START_TEXT = get_config(
         "ℹ️ Subscribe @SpEcHlDe if you 😍 using this bot❗️❣️"
     )
 )
+# message to indicate,
+# if any message was deleted by the user
+# so as to prevent replying to that message
+DELETED_MESSAGES_NOTIFICATION_TEXT = get_config(
+    "DELETED_MESSAGES_NOTIFICATION_TEXT",
+    (
+        "this message was deleted\n\n"
+        "This is an Open Source Project available on "
+        "https://github.com/SpEcHiDe/NoPMsBot\n\n\n"
+        "ℹ️ Subscribe @SpEcHlDe if you 😍 using this bot❗️❣️"
+    )
+)
 # IDEKWBYRW
 DERP_USER_S_TEXT = get_config(
     "DERP_USER_S_TEXT",

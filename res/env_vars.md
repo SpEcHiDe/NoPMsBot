@@ -35,6 +35,8 @@ Create a Super Group in Telegram, add `@GoogleIMGBot` to the group, and send /id
 
 * `ONLINE_CHECK_START_TEXT`: The message that the bot administrators can use to check if bot is online.
 
+* `DELETED_MESSAGES_NOTIFICATION_TEXT`: The message that the bot administrators can see if any message was deleted by the user.
+
 * `DERP_USER_S_TEXT`: Keep this to the default value, unless you know what you are doing.
 
 * `IS_BLACK_LIST_ED_MESSAGE_TEXT`: The message to be displayed to the user, when an administrator bans them from the bot.
