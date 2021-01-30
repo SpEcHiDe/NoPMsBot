@@ -46,6 +46,8 @@ async def un_ban_command(client: Client, message: Message):
     user_id, reply_message_id = get_user_id(
         message.reply_to_message.message_id
     )
+    if not user_id:
+        return
     _, unban_reason = get_tle_mof_t(message.text)
     rem_user_from_bl(user_id)
     black_list_message = IS_UN_BANED_MESSAGE_TEXT.format(

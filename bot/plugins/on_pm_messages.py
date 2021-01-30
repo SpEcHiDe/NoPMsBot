@@ -28,22 +28,24 @@ from bot import (
     IS_BLACK_LIST_ED_MESSAGE_TEXT,
     START_COMMAND
 )
+from bot.bot import Bot
 from bot.hf.flifi import uszkhvis_chats_ahndler
 from bot.sql.users_sql import (
-    add_user_to_db
+    add_user_to_db,
+    get_chek_dmid
 )
 from bot.sql.blacklist_sql import (
     check_is_black_list
 )
 
 
-@Client.on_message(
+@Bot.on_message(
     ~filters.command(START_COMMAND, COMMM_AND_PRE_FIX) &
     ~uszkhvis_chats_ahndler([AUTH_CHANNEL]) &
     filters.incoming &
     filters.private
 )
-async def on_pm_s(_, message: Message):
+async def on_pm_s(client: Bot, message: Message):
     check_ban = check_is_black_list(message)
     if check_ban:
         await message.reply_text(
@@ -53,9 +55,25 @@ async def on_pm_s(_, message: Message):
         )
         return
 
-    fwded_mesg = await message.forward(
-        AUTH_CHANNEL
-    )
+    fwded_mesg = None
+    if message.edit_date:
+        ym = get_chek_dmid(message.message_id)
+        reply_to_message_id = None
+        if ym:
+            reply_to_message_id = ym.message_id
+        fwded_mesg = await message.copy(
+            chat_id=AUTH_CHANNEL,
+            disable_notification=True,
+            reply_to_message_id=reply_to_message_id,
+            reply_markup=message.reply_markup
+        )
+    else:
+        fwded_mesg = await message.copy(
+            chat_id=AUTH_CHANNEL,
+            disable_notification=True,
+            reply_markup=message.reply_markup
+        )
+
     # just store, we don't need to SPAM users
     # mimick LiveGramBot, not @LimitatiBot ..!
     add_user_to_db(
@@ -63,3 +81,5 @@ async def on_pm_s(_, message: Message):
         message.from_user.id,
         message.message_id
     )
+
+

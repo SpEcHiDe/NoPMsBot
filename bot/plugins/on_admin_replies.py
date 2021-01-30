@@ -53,6 +53,8 @@ async def on_pm_s(client: Client, message: Message):
     user_id, reply_message_id = get_user_id(
         message.reply_to_message.message_id
     )
+    if not user_id:
+        return
     try:
         await send_message_to_user(
             client,

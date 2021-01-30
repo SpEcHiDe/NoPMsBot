@@ -57,7 +57,9 @@ def get_user_id(message_id: int):
     """ get the user_id from the message_id """
     try:
         s__ = SESSION.query(Users).get(str(message_id))
-        return int(s__.chat_id), s__.um_id
+        if s__:
+            return int(s__.chat_id), s__.um_id
+        return None, None
     finally:
         SESSION.close()
 
@@ -65,7 +67,13 @@ def get_user_id(message_id: int):
 def get_chek_dmid(um_id: int):
     """ get the deleted user_id from the um_id """
     try:
-        return SESSION.query(Users).filter(Users.um_id == um_id).one()
+        all_lst = SESSION.query(
+            Users
+        ).filter(
+            Users.um_id == um_id
+        ).all()
+        if all_lst:
+            return all_lst[-1]
     finally:
         SESSION.close()
 
