@@ -40,7 +40,8 @@ from bot.sql.blacklist_sql import (
 @Client.on_message(
     ~filters.command(START_COMMAND, COMMM_AND_PRE_FIX) &
     ~uszkhvis_chats_ahndler([AUTH_CHANNEL]) &
-    filters.incoming
+    filters.incoming &
+    filters.private
 )
 async def on_pm_s(_, message: Message):
     check_ban = check_is_black_list(message)
