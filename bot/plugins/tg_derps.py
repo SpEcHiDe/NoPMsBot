@@ -15,11 +15,15 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from pyrogram.types import Message
+from pyrogram.types import (
+    CallbackQuery,
+    Message
+)
 from typing import List
 from bot import (
     AUTH_CHANNEL,
-    DELETED_MESSAGES_NOTIFICATION_TEXT
+    DELETED_MESSAGES_NOTIFICATION_TEXT,
+    DERP_USER_S_TEXT
 )
 from bot.bot import Bot
 from bot.sql.users_sql import get_chek_dmid
@@ -37,4 +41,10 @@ async def on_del_mesgs(client: Bot, messages: List[Message]):
             )
 
 
-
+@Bot.on_callback_query()
+async def on_cb_qry(_, callback_query: CallbackQuery):
+    await callback_query.answer(
+        text=DERP_USER_S_TEXT,
+        show_alert=False,
+        cache_time=0
+    )
