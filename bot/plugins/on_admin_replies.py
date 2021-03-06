@@ -72,6 +72,7 @@ async def on_pm_s(client: Client, message: Message):
                 user_id,
                 0,
                 s_m_.message_id,
+                message.message_id
             )
 
 
