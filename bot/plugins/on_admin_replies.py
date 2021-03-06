@@ -38,6 +38,7 @@ from bot.hf.gfi import (
     get_file_id
 )
 from bot.sql.users_sql import (
+    add_user_to_db,
     get_user_id
 )
 
@@ -56,7 +57,7 @@ async def on_pm_s(client: Client, message: Message):
     if not user_id:
         return
     try:
-        await send_message_to_user(
+        s_m_ = await send_message_to_user(
             client,
             message,
             user_id,
@@ -64,6 +65,14 @@ async def on_pm_s(client: Client, message: Message):
         )
     except UserIsBlocked:
         await message.reply_text(BOT_WS_BLOCKED_BY_USER)
+    else:
+        if s_m_:
+            add_user_to_db(
+                reply_message_id,
+                user_id,
+                0,
+                s_m_.message_id,
+            )
 
 
 async def send_message_to_user(
@@ -78,7 +87,7 @@ async def send_message_to_user(
         caption = (
             message.caption and message.caption.html
         ) or ""
-        await client.send_cached_media(
+        return await client.send_cached_media(
             chat_id=user_id,
             file_id=file_id,
             caption=caption,
@@ -90,7 +99,7 @@ async def send_message_to_user(
         caption = (
             message.text and message.text.html
         ) or DERP_USER_S_TEXT
-        await client.send_message(
+        return await client.send_message(
             chat_id=user_id,
             text=caption,
             disable_web_page_preview=True,

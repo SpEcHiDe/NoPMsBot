@@ -79,7 +79,8 @@ async def on_pm_s(client: Bot, message: Message):
     add_user_to_db(
         fwded_mesg.message_id,
         message.from_user.id,
-        message.message_id
+        message.message_id,
+        0
     )
 
 
