@@ -61,21 +61,21 @@ async def on_pm_s(client: Bot, message: Message):
         reply_to_message_id = None
         if ym:
             reply_to_message_id = ym.message_id
-        fwded_mesg = await message.copy(
+        await message.copy(
             chat_id=AUTH_CHANNEL,
             disable_notification=True,
             reply_to_message_id=reply_to_message_id,
             reply_markup=message.reply_markup
         )
     else:
-        fwded_mesg = await message.copy(
+        fwded_mesg = await message.forward(
             chat_id=AUTH_CHANNEL,
-            disable_notification=True,
-            reply_markup=message.reply_markup
+            disable_notification=True
         )
 
-    # just store, we don't need to SPAM users
-    # mimick LiveGramBot, not @LimitatiBot ..!
+    if not fwded_mesg:
+        return
+
     add_user_to_db(
         fwded_mesg.message_id,
         message.from_user.id,
@@ -83,5 +83,4 @@ async def on_pm_s(client: Bot, message: Message):
         0,
         0
     )
-
 
