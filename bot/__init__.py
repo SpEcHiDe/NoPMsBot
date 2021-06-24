@@ -37,6 +37,8 @@ AUTH_CHANNEL = int(get_config(
         should_prompt=True
     )
 )
+# channel/chat to join before contacting
+SUB_CHANNEL = int(get_config("SUB_CHANNEL", "-100"))
 # sqlalchemy Database for the bot to operate
 DB_URI = get_config(
     "DATABASE_URL",
@@ -58,6 +60,8 @@ BAN_COMMAND = get_config("BAN_COMMAND", "ban")
 UN_BAN_COMMAND = get_config("UN_BAN_COMMAND", "unban")
 # start command
 START_COMMAND = get_config("START_COMMAND", "start")
+# broadcast command
+BROADCAST_COMMAND = get_config("BROADCAST_COMMAND","broadcast")
 # default message in-case of None types
 DEFAULT_START_TEXT = (
     "Hi. ☺️\n"

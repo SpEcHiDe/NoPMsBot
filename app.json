@@ -27,6 +27,9 @@
     },
     "AUTH_CHANNEL": {
       "description": "List down the user IDs who should have permission to use and reply to users, seperated by SPACE. To get user ids, send /id command to Telegram @OwnErObOT"
+    },
+    "SUB_CHANNEL": {
+      "description": "Id of Chat, where the User Should Join, in order to use/contact throught bot."
     }
   },
   "addons": [{
