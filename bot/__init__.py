@@ -61,7 +61,7 @@ UN_BAN_COMMAND = get_config("UN_BAN_COMMAND", "unban")
 # start command
 START_COMMAND = get_config("START_COMMAND", "start")
 # broadcast command
-BROADCAST_COMMAND = get_config("BROADCAST_COMMAND","broadcast")
+BROADCAST_COMMAND = get_config("BROADCAST_COMMAND", "broadcast")
 # default message in-case of None types
 DEFAULT_START_TEXT = (
     "Hi. ☺️\n"
