@@ -38,7 +38,7 @@ async def num_start_message(client: Bot, message: Message):
         try:
             await reply.copy(chat)
             SUCCESS += 1
-        except BaseException as e:
+        except Exception as e:
             print(e, chat)
     MSG = "**BroadCast Completed !**\n"
     MSG += f"Succeed : {SUCCESS} Chats!"
